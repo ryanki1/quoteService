@@ -2,6 +2,7 @@ from __future__ import division
 import tornado.ioloop
 import pyrestful.rest
 import random
+import os
 
 from pyrestful import mediatypes
 from pyrestful.rest import get
@@ -34,7 +35,8 @@ if __name__ == "__main__":
   try:
     print("Start the service")
     app = pyrestful.rest.RestService([QuoteResource])
-    app.listen(8080)
+    port = int(os.environ.get("PORT", 5000))
+    app.listen(port)
     tornado.ioloop.IOLoop.instance().start()
   except KeyboardInterrupt:
     print("\nStop the service")
