@@ -35,8 +35,7 @@ if __name__ == "__main__":
   try:
     print("Start the service")
     app = pyrestful.rest.RestService([QuoteResource])
-    port = int(os.environ.get("PORT", 5000))
-    app.listen(port)
+    app.listen(int(os.environ.get("PORT", 5000)))
     tornado.ioloop.IOLoop.instance().start()
   except KeyboardInterrupt:
     print("\nStop the service")
